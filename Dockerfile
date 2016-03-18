@@ -7,7 +7,8 @@ RUN mkdir -p \
   /opt/nanobox/hooks
 
 # Install influxdb and rsync
-RUN apt-get install apt-transport-https && \
+RUN apt-get update -qq && \
+    apt-get install apt-transport-https && \
     curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
     echo "deb https://repos.influxdata.com/ubuntu trusty stable" \
       > /etc/apt/sources.list.d/influxdb.list && \
