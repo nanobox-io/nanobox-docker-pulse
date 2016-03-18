@@ -6,9 +6,13 @@ RUN mkdir -p \
   /var/nanobox \
   /opt/nanobox/hooks
 
-# Install rsync
-RUN apt-get update -qq && \
-    apt-get install -y rsync && \
+# Install influxdb and rsync
+RUN apt-get install apt-transport-https && \
+    curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
+    echo "deb https://repos.influxdata.com/ubuntu trusty stable" \
+      > /etc/apt/sources.list.d/influxdb.list && \
+    apt-get update -qq && \
+    apt-get install -y rsync influxdb && \
     apt-get clean all && \
     rm -rf /var/lib/apt/lists/*
 
