@@ -8,7 +8,10 @@
 @test "Verify pulse installed" {
   # ensure pulse executable exists
   run docker exec "pulse-test" bash -c "[ -f /usr/local/bin/pulse ]"
+  [ "$status" -eq 0 ]
 
+  # ensure influxdb is installed
+  run docker exec "pulse-test" bash -c "[ -f /usr/bin/influxd ]"
   [ "$status" -eq 0 ]
 }
 
