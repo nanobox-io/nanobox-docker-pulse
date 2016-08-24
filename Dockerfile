@@ -6,16 +6,27 @@ RUN mkdir -p \
   /var/nanobox \
   /opt/nanobox/hooks
 
+# Don't use apt-get to install influx until 1.0 gets to the main repo
+
 # Install influxdb and rsync
+# RUN apt-get update -qq && \
+#     apt-get install -y apt-transport-https && \
+#     curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
+#     echo "deb https://repos.influxdata.com/ubuntu trusty stable" \
+#       > /etc/apt/sources.list.d/influxdb.list && \
+#     apt-get update -qq && \
+#     apt-get install -y rsync influxdb && \
+#     apt-get clean all && \
+#     rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update -qq && \
-    apt-get install -y apt-transport-https && \
-    curl -sL https://repos.influxdata.com/influxdb.key | apt-key add - && \
-    echo "deb https://repos.influxdata.com/ubuntu trusty stable" \
-      > /etc/apt/sources.list.d/influxdb.list && \
-    apt-get update -qq && \
-    apt-get install -y rsync influxdb && \
+    apt-get install -y rsync && \
     apt-get clean all && \
     rm -rf /var/lib/apt/lists/*
+
+RUN wget -O /tmp/influxdb_1.0.0~rc1_amd64.deb https://dl.influxdata.com/influxdb/releases/influxdb_1.0.0~rc1_amd64.deb && \
+    dpkg -i /tmp/influxdb_1.0.0~rc1_amd64.deb && \
+    rm /tmp/influxdb_1.0.0~rc1_amd64.deb
 
 # Download pulse
 RUN curl \
