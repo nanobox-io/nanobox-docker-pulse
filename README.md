@@ -1,4 +1,4 @@
-## nanobox-docker-pulse ![Build Status Image](https://travis-ci.org/nanobox-io/nanobox-docker-pulse.svg)
+## nanobox-docker-pulse [![Build Status Image](https://travis-ci.org/nanobox-io/nanobox-docker-pulse.svg)](https://travis-ci.org/nanobox-io/nanobox-docker-pulse)
 
 This repo contains the files necessary to create the pulse docker image for [Nanobox](http://nanobox.io) consumption.
 
