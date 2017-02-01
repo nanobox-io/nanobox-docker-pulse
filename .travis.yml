@@ -23,6 +23,7 @@ after_success:
   - docker tag ${NAMESPACE}/pulse:squashed ${NAMESPACE}/pulse:beta;
   - docker push ${REMOTE}${NAMESPACE}/pulse:beta;
   - if [ "$BRANCH" == "master" ]; then
+    docker tag ${NAMESPACE}/pulse:squashed ${NAMESPACE}/pulse;
     docker push ${REMOTE}${NAMESPACE}/pulse;
     else
     docker tag ${NAMESPACE}/pulse:squashed ${NAMESPACE}/pulse:${BRANCH//\//_};
