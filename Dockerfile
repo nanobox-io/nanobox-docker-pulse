@@ -63,5 +63,7 @@ RUN curl \
       -o /var/nanobox/hooks.md5 \
       https://s3.amazonaws.com/tools.nanobox.io/hooks/pulse-stable.md5
 
+WORKDIR /data
+
 # Run runit automatically
 CMD [ "/opt/gonano/bin/nanoinit" ]
