@@ -25,14 +25,14 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/*
 
 # Install influx
-RUN wget -O /tmp/influxdb_1.1.1_amd64.deb https://dl.influxdata.com/influxdb/releases/influxdb_1.1.1_amd64.deb && \
-    dpkg -i /tmp/influxdb_1.1.1_amd64.deb && \
-    rm /tmp/influxdb_1.1.1_amd64.deb
+RUN wget -O /tmp/influxdb_1.2.2_amd64.deb https://dl.influxdata.com/influxdb/releases/influxdb_1.2.2_amd64.deb && \
+    dpkg -i /tmp/influxdb_1.2.2_amd64.deb && \
+    rm /tmp/influxdb_1.2.2_amd64.deb
 
 # Install kapacitor
-RUN wget -O /tmp/kapacitor_1.1.1_amd64.deb https://dl.influxdata.com/kapacitor/releases/kapacitor_1.1.1_amd64.deb && \
-    dpkg -i /tmp/kapacitor_1.1.1_amd64.deb && \
-    rm /tmp/kapacitor_1.1.1_amd64.deb
+RUN wget -O /tmp/kapacitor_1.2.0_amd64.deb https://dl.influxdata.com/kapacitor/releases/kapacitor_1.2.0_amd64.deb && \
+    dpkg -i /tmp/kapacitor_1.2.0_amd64.deb && \
+    rm /tmp/kapacitor_1.2.0_amd64.deb
 
 # Download pulse
 RUN curl \
